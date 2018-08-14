@@ -9,6 +9,7 @@ import java.util.Arrays;
 
 public class FamilyActivity extends AppCompatActivity {
 
+    private ListClickListener listener = new ListClickListener();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +40,13 @@ public class FamilyActivity extends AppCompatActivity {
 
         WordAdapter familyAdapter = new WordAdapter(this, familyList, R.color.category_family);
         ListView listView = (ListView)findViewById(R.id.list);
-        listView.setOnItemClickListener(new ListClickListener());
+        listView.setOnItemClickListener(listener);
         listView.setAdapter(familyAdapter);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        listener.mediaPlayer.release();
     }
 }

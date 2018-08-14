@@ -9,6 +9,7 @@ import java.util.Arrays;
 
 public class NumbersActivity extends AppCompatActivity {
 
+    private ListClickListener listener = new ListClickListener();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +40,13 @@ public class NumbersActivity extends AppCompatActivity {
 
         WordAdapter itemsAdapter = new WordAdapter(this, words, R.color.category_numbers);
         ListView listView = (ListView)findViewById(R.id.list);
-        listView.setOnItemClickListener(new ListClickListener());
+        listView.setOnItemClickListener(listener);
         listView.setAdapter(itemsAdapter);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        listener.mediaPlayer.release();
     }
 }

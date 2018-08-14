@@ -9,6 +9,7 @@ import java.util.Arrays;
 
 public class PhrasesActivity extends AppCompatActivity {
 
+    private ListClickListener listener = new ListClickListener();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,13 @@ public class PhrasesActivity extends AppCompatActivity {
 
         WordAdapter phrasesAdapter = new WordAdapter(this, phrasesList, R.color.category_phrases);
         ListView listView = (ListView)findViewById(R.id.list);
+        listView.setOnItemClickListener(listener);
         listView.setAdapter(phrasesAdapter);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        listener.mediaPlayer.release();
     }
 }

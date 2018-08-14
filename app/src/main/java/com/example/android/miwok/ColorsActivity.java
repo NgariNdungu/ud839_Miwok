@@ -1,5 +1,6 @@
 package com.example.android.miwok;
 
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -8,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ColorsActivity extends AppCompatActivity {
+
+    private ListClickListener listener = new ListClickListener();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +38,13 @@ public class ColorsActivity extends AppCompatActivity {
 
         WordAdapter colorsAdapter = new WordAdapter(this, colorsList, R.color.category_colors);
         ListView listView = (ListView)findViewById(R.id.list);
-        listView.setOnItemClickListener(new ListClickListener());
+        listView.setOnItemClickListener(listener);
         listView.setAdapter(colorsAdapter);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        listener.mediaPlayer.release();
     }
 }
