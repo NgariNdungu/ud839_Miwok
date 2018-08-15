@@ -47,6 +47,6 @@ public class NumbersActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        listener.mediaPlayer.release();
+        listener.releaseResources(null);
     }
 }

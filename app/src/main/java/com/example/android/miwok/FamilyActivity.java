@@ -47,6 +47,7 @@ public class FamilyActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        listener.mediaPlayer.release();
+        // release mediaPlayer and audioFocus
+        listener.releaseResources(null);
     }
 }
