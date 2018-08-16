@@ -1,43 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent"
-    tools:ignore="RtlSymmetry"
     style="@style/ListItemStyle"
-    >
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="RtlSymmetry"
+    tools:background="@color/category_colors">
 
     <ImageView
         android:id="@+id/image"
-        tools:src="@mipmap/ic_launcher"
-        android:layout_alignParentLeft="true"
+        style="@style/IconStyle"
         android:paddingEnd="16dp"
         android:paddingRight="16dp"
-        android:layout_alignParentStart="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="ContentDescription"
-        style="@style/IconStyle"/>
+        tools:src="@mipmap/ic_launcher" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/miwok_text_view"
+        style="@style/MiwokTextStyle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_toRightOf="@id/image"
-        android:layout_centerInParent="true">
-        <TextView
-            android:id="@+id/miwok_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="lutti"
-            tools:ignore="RtlHardcoded"
-            style="@style/MiwokTextStyle"/>
+        app:layout_constraintLeft_toRightOf="@id/image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/default_text_view"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:ignore="RtlHardcoded"
+        tools:text="lutti" />
 
-        <TextView
-            android:id="@+id/default_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="one"
-            style="@style/DefaultTextStyle"/>
+    <TextView
+        android:id="@+id/default_text_view"
+        style="@style/DefaultTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/image"
+        app:layout_constraintTop_toBottomOf="@id/miwok_text_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text="one" />
 
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/play_button"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:layout_constraintBottom_toBottomOf="@id/default_text_view"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toRightOf="@id/default_text_view"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/miwok_text_view"
+        android:layout_marginRight="16dp"
+        android:src="@drawable/baseline_play_arrow" />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
