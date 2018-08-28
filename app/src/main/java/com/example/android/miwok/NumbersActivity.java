@@ -10,6 +10,7 @@ import java.util.Arrays;
 public class NumbersActivity extends AppCompatActivity {
 
     private ListClickListener listener = new ListClickListener();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +43,10 @@ public class NumbersActivity extends AppCompatActivity {
         ListView listView = (ListView)findViewById(R.id.list);
         listView.setOnItemClickListener(listener);
         listView.setAdapter(itemsAdapter);
+
+        // Add up arrow
+        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     @Override
